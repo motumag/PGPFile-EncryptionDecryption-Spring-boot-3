@@ -55,7 +55,10 @@ import org.bouncycastle.util.io.Streams;
  */
 public class KeyBasedFileProcessor
 {
-    private static void decryptFile(
+    static {
+        Security.addProvider(new BouncyCastleProvider());
+    }
+    public static void decryptFile(
         String inputFileName,
         String keyFileName,
         char[] passwd,
@@ -186,7 +189,7 @@ public class KeyBasedFileProcessor
         }
     }
 
-    private static void encryptFile(
+    public static void encryptFile(
         String          outputFileName,
         String          inputFileName,
         String          encKeyFileName,
