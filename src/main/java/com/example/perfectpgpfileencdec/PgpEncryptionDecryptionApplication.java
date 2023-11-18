@@ -16,7 +16,6 @@ public class PgpEncryptionDecryptionApplication implements CommandLineRunner {
     private Resource outPutResourse;
     @Value("classpath:files/sample.txt")
     private Resource inPutResourse;
-
     @Value("classpath:files/sample.pgp")
     private Resource inPutResoursePGP;
 
@@ -24,10 +23,6 @@ public class PgpEncryptionDecryptionApplication implements CommandLineRunner {
     private Resource motumaPublicKeys;
     @Value("classpath:keys/motuma-priv.asc")
     private Resource motumaPrivateKeys;
-
-    private static final String PUBLIC_KEY_FILE = "public.key";
-    private static final String PRIVATE_KEY_FILE = "private.key";
-
     public static void main(String[] args) {
         SpringApplication.run(PgpEncryptionDecryptionApplication.class, args);
     }
