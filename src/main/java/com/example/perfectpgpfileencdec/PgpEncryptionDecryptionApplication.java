@@ -14,7 +14,7 @@ public class PgpEncryptionDecryptionApplication implements CommandLineRunner {
     private Logger logger= LoggerFactory.getLogger(PgpEncryptionDecryptionApplication.class);
     @Value("classpath:output/sample.pgp")
     private Resource outPutResourse;
-    @Value("classpath:output/sample.pgp")
+    @Value("classpath:files/sample.txt")
     private Resource inPutResourse;
 
     @Value("classpath:keys/motuma-pub.asc")
@@ -34,9 +34,13 @@ public class PgpEncryptionDecryptionApplication implements CommandLineRunner {
         String inputFileName=inPutResourse.getFile().toPath().toString();
         String publicKeyFileName=motumaPublicKeys.getFile().getPath().toString();
         String privateKeyFileName=motumaPrivateKeys.getFile().getPath().toString();
-        logger.info("Encrypting {}",inputFileName);
-        KeyBasedFileProcessor.encryptFile(outPutFileName,inputFileName,publicKeyFileName,true,true);
-    logger.info("Successfully Encrypted {}",inputFileName);
+        logger.info("Encrypting {}", inputFileName);
+        KeyBasedFileProcessor.encryptFile(outPutFileName, inputFileName, publicKeyFileName, true, true);
+        logger.info("Successfully Encrypted {}", inputFileName);
+
+//        logger.info("Decrypting {}", inputFileName);
+//        KeyBasedFileProcessor.encryptFile(outPutFileName, inputFileName, publicKeyFileName, true, true);
+//        logger.info("Successfully Decrypted {}", inputFileName);
 
     }
 }
