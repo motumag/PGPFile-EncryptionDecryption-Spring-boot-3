@@ -64,7 +64,7 @@ public class KeyBasedFileProcessor
     {
         InputStream in = new BufferedInputStream(new FileInputStream(inputFileName));
         InputStream keyIn = new BufferedInputStream(new FileInputStream(keyFileName));
-        decryptFile(in, keyIn, passwd, defaultFileName);
+        decryptFileWithStream(in, keyIn, passwd, defaultFileName);
         keyIn.close();
         in.close();
     }
@@ -72,7 +72,7 @@ public class KeyBasedFileProcessor
     /**
      * decrypt the passed in message stream
      */
-    private static void decryptFile(
+    private static void decryptFileWithStream(
         InputStream in,
         InputStream keyIn,
         char[]      passwd,
@@ -196,11 +196,11 @@ public class KeyBasedFileProcessor
     {
         OutputStream out = new BufferedOutputStream(new FileOutputStream(outputFileName));
         PGPPublicKey encKey = PGPExampleUtil.readPublicKey(encKeyFileName);
-        encryptFile(out, inputFileName, encKey, armor, withIntegrityCheck);
+        encryptFileWithStream(out, inputFileName, encKey, armor, withIntegrityCheck);
         out.close();
     }
 
-    private static void encryptFile(
+    private static void encryptFileWithStream(
         OutputStream    out,
         String          fileName,
         PGPPublicKey    encKey,
@@ -246,7 +246,7 @@ public class KeyBasedFileProcessor
         }
     }
 
-    public static void main(
+    private static void main(
         String[] args)
         throws Exception
     {
